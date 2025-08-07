@@ -1,6 +1,7 @@
 import 'package:al_ummah_institute/screens/dash_board_screen.dart';
 import 'package:al_ummah_institute/screens/login_screen.dart';
 import 'package:al_ummah_institute/screens/main_screen_one.dart';
+import 'package:al_ummah_institute/screens/new_time_table.dart';
 import 'package:al_ummah_institute/screens/teacher_dash_board.dart';
 import 'package:al_ummah_institute/sign_up_screen.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         )
 
       ),
-      home:LoginScreen()
+      home:NewTimeTable()
       //   home:MainScreenOne()
 
 

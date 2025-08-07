@@ -15,7 +15,6 @@ class ShowTimeTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Disable text scaling globally for this screen
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
       child: Scaffold(
