@@ -5,6 +5,7 @@ import 'package:al_ummah_institute/helpers/colors.dart';
 import 'package:al_ummah_institute/helpers/extensions.dart';
 import 'package:al_ummah_institute/screens/invoices.dart';
 import 'package:al_ummah_institute/screens/leave_request_screen.dart';
+import 'package:al_ummah_institute/screens/new_time_table.dart';
 import 'package:al_ummah_institute/screens/personal_information_screen.dart';
 import 'package:al_ummah_institute/screens/show_result_screen.dart';
 import 'package:al_ummah_institute/screens/show_time_table.dart';
@@ -58,7 +59,7 @@ class DashBoardScreen extends StatelessWidget {
                 drawerContainer, () {}),
             buildDrawerTile(Icons.schedule, "Time Table", drawerContainer,
                 drawerContainer, () {
-                  context.openScreen(ShowTimeTable(className: student['class']));
+                  context.openScreen(NewTimeTable(className: student['class']));
                 }),
 
             buildDrawerTile(Icons.receipt_long, "Invoices", drawerContainer,

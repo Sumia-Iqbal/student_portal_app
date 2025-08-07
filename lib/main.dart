@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         )
 
       ),
-      home:NewTimeTable()
+      home:LoginScreen()
       //   home:MainScreenOne()
 
 
