@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
           Center(
             child: SingleChildScrollView(
               child: Container(
-                width: screenWidth * 0.3, // 80% of screen width
+                width: screenWidth>700?screenWidth * 0.3:screenWidth*0.8, // 80% of screen width
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   color: blueColor.withOpacity(0.75),
