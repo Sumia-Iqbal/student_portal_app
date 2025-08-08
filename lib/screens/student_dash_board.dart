@@ -32,7 +32,9 @@ class StudentDashBoard extends StatelessWidget {
         body: SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Column(children: [
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           SizedBox(height: height * 0.055),
           Stack(clipBehavior: Clip.none, children: [
             Container(
@@ -58,12 +60,19 @@ class StudentDashBoard extends StatelessWidget {
                 )),
             Positioned(
               top: 70,
-              left: width / 2 - 90,
-              child: Text(student['name'],
+              child:
+              Align(
+                alignment: Alignment.center ,
+                child: Text(
+                  student['name'],
+                  textAlign: TextAlign.center,
                   style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold)),
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
             Positioned(
               top: 120,
@@ -213,7 +222,62 @@ class StudentDashBoard extends StatelessWidget {
               )
 
             ))
-          ])
+          ]),
+          SizedBox(height:50),
+          Text("Monday,22 April",
+            style:GoogleFonts.inter(
+              fontWeight:FontWeight.w600,
+              fontSize:25
+            )
+
+          ),
+              SizedBox(height:20),
+              Expanded(child:ListView.builder(
+                  itemCount:3,
+                  itemBuilder: (context,index){
+                return Container(
+                  padding:EdgeInsets.all(15),
+                  margin:EdgeInsets.only(bottom:20),
+                  decoration:BoxDecoration(
+                    color:Colors.white,
+                     borderRadius:BorderRadius.circular(20),
+                    boxShadow: [
+
+                    ],
+                  ),
+                  child:Row(children:[
+                    Text("7:00-7:45",
+                    style:TextStyle(
+                      color:Colors.grey.withOpacity(0.5),
+
+                    )
+                    ),
+                    SizedBox(width:20),
+                    Container(height:30,width:2,color:Colors.grey),
+                    SizedBox(width:30),
+                    Column(children:[
+                      Text("Geography",
+                      style:GoogleFonts.inter(
+                        fontSize:18,
+                        fontWeight:FontWeight.bold
+                      )
+                      ),
+                      SizedBox(height:10),
+                      Row(children:[
+                        CircleAvatar(backgroundImage:
+                        NetworkImage('https://plus.unsplash.com/premium_photo-1689568126014-'
+                            '06fea9d5d341?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3w'
+                            'xMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D',)),
+                        SizedBox(width:8),
+
+                        Text("Miss Aysha",
+                        style:TextStyle(color:Colors.black54)
+                        )
+                      ])
+                    ])
+                  ])
+                );
+              }))
         ]),
       ),
     ));
