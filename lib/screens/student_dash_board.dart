@@ -12,7 +12,7 @@ class StudentDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    StudentsController studentsController = Get.find<StudentsController>();
+    StudentsController studentsController = Get.put(StudentsController());
     TimeTableController timeTableController = Get.put(TimeTableController());
 
     final student = studentsController.studentData.isNotEmpty
@@ -40,22 +40,26 @@ class StudentDashBoard extends StatelessWidget {
                 height: height * 0.4,
                 decoration: BoxDecoration(
                     color: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(16))),
+                    borderRadius: BorderRadius.circular(20))),
             Positioned(
-                top: -30,
+                top: -40,
                 left: width / 2 - 60,
                 child: Container(
-                  width: 80,
-                  height: 80,
+                  width: 90,
+                  height: 90,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: kPrimaryColor.withOpacity(0),
-                      border: Border.all(color: Colors.white, width: 2)),
+                      color: kPrimaryColor.withOpacity(0.4),
+                      border: Border.all(color: Colors.white, width: 2),
+                    image:DecorationImage(fit:BoxFit.cover,image:NetworkImage(student['picture_url'], )
+
+                    ),
+                  ),
                 )),
             Positioned(
               top: 70,
               left: width / 2 - 90,
-              child: Text("Alon Wilsom",
+              child: Text(student['name'],
                   style: GoogleFonts.inter(
                       color: Colors.white,
                       fontSize: 30,
@@ -64,7 +68,7 @@ class StudentDashBoard extends StatelessWidget {
             Positioned(
               top: 120,
               left: width / 2 - 50,
-              child: Text("10th Grade",
+              child: Text("${student['class']} Grade",
                   style: GoogleFonts.inter(
                     color: Colors.white,
                     fontSize: 15,

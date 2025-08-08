@@ -1,3 +1,4 @@
+import 'package:al_ummah_institute/screens/student_dash_board.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/students_controller.dart';
@@ -95,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                           if (loginResult == 'success') {
                             await studentsController.fetchStudentData(
                                 cnic, password);
-                            context.openScreen(DashBoardScreen());
+                            context.openScreen(StudentDashBoard());
                           } else {
                             context
                                 .showSnackBar("Invalid CNIC or Password");

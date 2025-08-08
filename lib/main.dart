@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         )
 
       ),
-      home:StudentDashBoard()
+      home:LoginScreen()
       //   home:MainScreenOne()
 
 
