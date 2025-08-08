@@ -1,0 +1,217 @@
+import 'package:al_ummah_institute/helpers/colors.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../controllers/students_controller.dart';
+import '../controllers/time_table_controller.dart';
+
+class StudentDashBoard extends StatelessWidget {
+  const StudentDashBoard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    StudentsController studentsController = Get.find<StudentsController>();
+    TimeTableController timeTableController = Get.put(TimeTableController());
+
+    final student = studentsController.studentData.isNotEmpty
+        ? studentsController.studentData.first
+        : {};
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    List categories = [
+      ['Academic\nstatus', Icons.rocket_launch,boxBlueColor],
+      ['home work', Icons.sticky_note_2,boxColor2],
+      [
+        'home work',Icons.person,Colors.amberAccent
+      ]
+    ];
+
+    return Scaffold(
+        body: SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(children: [
+          SizedBox(height: height * 0.055),
+          Stack(clipBehavior: Clip.none, children: [
+            Container(
+                width: width,
+                height: height * 0.4,
+                decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(16))),
+            Positioned(
+                top: -30,
+                left: width / 2 - 60,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: kPrimaryColor.withOpacity(0),
+                      border: Border.all(color: Colors.white, width: 2)),
+                )),
+            Positioned(
+              top: 70,
+              left: width / 2 - 90,
+              child: Text("Alon Wilsom",
+                  style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Positioned(
+              top: 120,
+              left: width / 2 - 50,
+              child: Text("10th Grade",
+                  style: GoogleFonts.inter(
+                    color: Colors.white,
+                    fontSize: 15,
+                  )),
+            ),
+            Positioned(
+              top: 200,
+              left:10,
+              child: SizedBox(
+                width: width*0.89, // 👈 constrain width here
+                height: 60,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 10),
+                            blurRadius:10,
+                            spreadRadius:10,
+                            color:kPrimaryColor.withOpacity(0.4)
+
+                          )
+                        ]
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding:EdgeInsets.all(8),
+                              decoration:BoxDecoration(
+                          color:categories[index][2],
+                                borderRadius:BorderRadius.circular(8)
+                      ),
+                              child: Icon(categories[index][1], size: 20,color:Colors.white)),
+                          SizedBox(width: 10),
+                          Text(
+                            categories[index][0],
+                            style: GoogleFonts.inter(fontSize: 17,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+
+              ),
+            ),
+            Positioned(
+              bottom:-15,
+                left:0,
+                right:0,
+
+                child:Container(
+                  width:width,
+                  padding:EdgeInsets.all(12),
+              decoration:BoxDecoration(color:kSecondaryColor,
+                  borderRadius:BorderRadius.circular(16)
+              ),
+              child:SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(children:[
+                  Container(
+                    margin:EdgeInsets.only(right:24),
+                      padding:EdgeInsets.all(25),
+                      decoration:BoxDecoration(color:kSecondaryColor2,
+                      borderRadius:BorderRadius.circular(16)
+                  ),
+                  child:Column(
+                    children:[
+                      Text("B+",
+                      style:TextStyle(color:Colors.white,
+                      fontSize:18,
+                        fontWeight:FontWeight.bold
+                      )
+                      ),
+                      Text("Letter grade",
+                          style:TextStyle(color:Colors.white70,
+
+                          )
+                      )
+
+                    ]
+                  )
+                  ),
+
+                  Container(
+                      margin:EdgeInsets.only(right:24),
+
+                      padding:EdgeInsets.all(25),
+                      decoration:BoxDecoration(color:kSecondaryColor2,
+                          borderRadius:BorderRadius.circular(16)
+                      ),
+                      child:Column(
+                          children:[
+                            Text("B+",
+                                style:TextStyle(color:Colors.white,
+                                    fontSize:18,
+                                    fontWeight:FontWeight.bold
+                                )
+                            ),
+                            Text("Letter grade",
+                                style:TextStyle(color:Colors.white70,
+
+                                )
+                            )
+
+                          ]
+                      )
+                  ),
+                  Container(
+                      margin:EdgeInsets.only(right:24),
+
+                      padding:EdgeInsets.all(25),
+                      decoration:BoxDecoration(color:kSecondaryColor2,
+                          borderRadius:BorderRadius.circular(16)
+                      ),
+                      child:Column(
+                          children:[
+                            Text("B+",
+                                style:TextStyle(color:Colors.white,
+                                    fontSize:18,
+                                    fontWeight:FontWeight.bold
+                                )
+                            ),
+                            Text("Letter grade",
+                                style:TextStyle(color:Colors.white70,
+
+                                )
+                            )
+
+                          ]
+                      )
+                  )
+                ]),
+              )
+
+            ))
+          ])
+        ]),
+      ),
+    ));
+  }
+}

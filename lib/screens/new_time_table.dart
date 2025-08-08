@@ -13,13 +13,13 @@ class NewTimeTable extends StatelessWidget {
   final TimeTableController controller = Get.put(TimeTableController());
 
   final List<Color> boxColors = [
-    Colors.green.withOpacity(0.3),
-    Colors.orange.shade100,
-    Colors.blue.shade100,
-    Colors.pink.shade100,
-    Colors.green.shade100,
-    Colors.teal.shade100,
-    Colors.yellow.shade100,
+    Colors.green.withOpacity(0.7),
+    Colors.orange.shade300,
+    Colors.blue.shade300,
+    Colors.pink.shade300,
+    Colors.green.shade400,
+    Colors.teal.shade200,
+    Colors.yellow.shade300,
   ];
 
   @override
