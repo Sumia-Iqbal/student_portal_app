@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/students_controller.dart';
 import '../controllers/time_table_controller.dart';
+import '../helpers/colors.dart';
 
 class StudentDashBoard extends StatelessWidget {
   const StudentDashBoard({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class StudentDashBoard extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: bgColor,
         body: SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -60,6 +62,7 @@ class StudentDashBoard extends StatelessWidget {
                 )),
             Positioned(
               top: 70,
+              left:100,
               child:
               Align(
                 alignment: Alignment.center ,
@@ -248,7 +251,7 @@ class StudentDashBoard extends StatelessWidget {
                   child:Row(children:[
                     Text("7:00-7:45",
                     style:TextStyle(
-                      color:Colors.grey.withOpacity(0.5),
+                      color:greyColor,
 
                     )
                     ),
@@ -259,7 +262,8 @@ class StudentDashBoard extends StatelessWidget {
                       Text("Geography",
                       style:GoogleFonts.inter(
                         fontSize:18,
-                        fontWeight:FontWeight.bold
+                        fontWeight:FontWeight.bold,
+                        color:subjectColor
                       )
                       ),
                       SizedBox(height:10),
@@ -271,7 +275,7 @@ class StudentDashBoard extends StatelessWidget {
                         SizedBox(width:8),
 
                         Text("Miss Aysha",
-                        style:TextStyle(color:Colors.black54)
+                        style:TextStyle(color:teacherColor)
                         )
                       ])
                     ])
