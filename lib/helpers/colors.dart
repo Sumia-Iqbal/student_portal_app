@@ -19,6 +19,11 @@ Color greyColor =Color(0xFF9aa4b7);
 Color subjectColor =Color(0xFF1e293f);
 Color teacherColor =Color(0xFF232c41);
 Color bgColor =Color(0xFFcbe9fb);
+Color bottomNavColor =Color(0xFF07183b);
+Color unSelectedColor =Color(0xFF07183b);
+
+
+
 
 
 

@@ -12,6 +12,7 @@ class StudentDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RxInt selectedIndex = 0.obs;
     StudentsController studentsController = Get.put(StudentsController());
     TimeTableController timeTableController = Get.put(TimeTableController());
 
@@ -19,17 +20,25 @@ class StudentDashBoard extends StatelessWidget {
         ? studentsController.studentData.first
         : {};
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (student['class'] != null && student['class'].toString().isNotEmpty) {
+      if (student['class'] != null && student['class']
+          .toString()
+          .isNotEmpty) {
         timeTableController.fetchTimeTableForClass(student['class']);
       }
     });
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     List categories = [
-      ['Academic\nstatus', Icons.rocket_launch,boxBlueColor],
-      ['home work', Icons.sticky_note_2,boxColor2],
+      ['Academic\nstatus', Icons.rocket_launch, boxBlueColor],
+      ['home work', Icons.sticky_note_2, boxColor2],
       [
-        'home work',Icons.person,Colors.amberAccent
+        'home work', Icons.person, Colors.amberAccent
       ]
     ];
 
@@ -38,6 +47,8 @@ class StudentDashBoard extends StatelessWidget {
         .toList();
 
     return Scaffold(
+
+
         backgroundColor: bgColor,
         body: SafeArea(
           child: Padding(
@@ -63,17 +74,19 @@ class StudentDashBoard extends StatelessWidget {
                             shape: BoxShape.circle,
                             color: kPrimaryColor.withOpacity(0.4),
                             border: Border.all(color: Colors.white, width: 2),
-                            image:DecorationImage(fit:BoxFit.cover,image:NetworkImage(student['picture_url'], )
+                            image: DecorationImage(
+                                fit: BoxFit.cover, image: NetworkImage(
+                              student['picture_url'],)
 
                             ),
                           ),
                         )),
                     Positioned(
                       top: 70,
-                      left:100,
+                      left: 100,
                       child:
                       Align(
-                        alignment: Alignment.center ,
+                        alignment: Alignment.center,
                         child: Text(
                           student['name'],
                           textAlign: TextAlign.center,
@@ -96,26 +109,28 @@ class StudentDashBoard extends StatelessWidget {
                     ),
                     Positioned(
                       top: 200,
-                      left:10,
+                      left: 10,
                       child: SizedBox(
-                        width: width*0.89, // 👈 constrain width here
+                        width: width * 0.89, // 👈 constrain width here
                         height: 60,
                         child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           itemCount: categories.length,
                           itemBuilder: (context, index) {
                             return Container(
                               margin: EdgeInsets.only(right: 10),
-                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 8),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
                                         offset: Offset(0, 10),
-                                        blurRadius:10,
-                                        spreadRadius:10,
-                                        color:kPrimaryColor.withOpacity(0.4)
+                                        blurRadius: 10,
+                                        spreadRadius: 10,
+                                        color: kPrimaryColor.withOpacity(0.4)
 
                                     )
                                   ]
@@ -123,12 +138,14 @@ class StudentDashBoard extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
-                                      padding:EdgeInsets.all(8),
-                                      decoration:BoxDecoration(
-                                          color:categories[index][2],
-                                          borderRadius:BorderRadius.circular(8)
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          color: categories[index][2],
+                                          borderRadius: BorderRadius.circular(8)
                                       ),
-                                      child: Icon(categories[index][1], size: 20,color:Colors.white)),
+                                      child: Icon(
+                                          categories[index][1], size: 20,
+                                          color: Colors.white)),
                                   SizedBox(width: 10),
                                   Text(
                                     categories[index][0],
@@ -144,35 +161,38 @@ class StudentDashBoard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                        bottom:-15,
-                        left:0,
-                        right:0,
+                        bottom: -15,
+                        left: 0,
+                        right: 0,
 
-                        child:Container(
-                            width:width,
-                            padding:EdgeInsets.all(12),
-                            decoration:BoxDecoration(color:kSecondaryColor,
-                                borderRadius:BorderRadius.circular(16)
+                        child: Container(
+                            width: width,
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(color: kSecondaryColor,
+                                borderRadius: BorderRadius.circular(16)
                             ),
-                            child:SingleChildScrollView(
+                            child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-                              child: Row(children:[
+                              child: Row(children: [
                                 Container(
-                                    margin:EdgeInsets.only(right:24),
-                                    padding:EdgeInsets.all(25),
-                                    decoration:BoxDecoration(color:kSecondaryColor2,
-                                        borderRadius:BorderRadius.circular(16)
+                                    margin: EdgeInsets.only(right: 24),
+                                    padding: EdgeInsets.all(25),
+                                    decoration: BoxDecoration(
+                                        color: kSecondaryColor2,
+                                        borderRadius: BorderRadius.circular(16)
                                     ),
-                                    child:Column(
-                                        children:[
+                                    child: Column(
+                                        children: [
                                           Text("B+",
-                                              style:TextStyle(color:Colors.white,
-                                                  fontSize:18,
-                                                  fontWeight:FontWeight.bold
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold
                                               )
                                           ),
                                           Text("Letter grade",
-                                              style:TextStyle(color:Colors.white70,
+                                              style: TextStyle(
+                                                color: Colors.white70,
 
                                               )
                                           )
@@ -182,22 +202,25 @@ class StudentDashBoard extends StatelessWidget {
                                 ),
 
                                 Container(
-                                    margin:EdgeInsets.only(right:24),
+                                    margin: EdgeInsets.only(right: 24),
 
-                                    padding:EdgeInsets.all(25),
-                                    decoration:BoxDecoration(color:kSecondaryColor2,
-                                        borderRadius:BorderRadius.circular(16)
+                                    padding: EdgeInsets.all(25),
+                                    decoration: BoxDecoration(
+                                        color: kSecondaryColor2,
+                                        borderRadius: BorderRadius.circular(16)
                                     ),
-                                    child:Column(
-                                        children:[
+                                    child: Column(
+                                        children: [
                                           Text("B+",
-                                              style:TextStyle(color:Colors.white,
-                                                  fontSize:18,
-                                                  fontWeight:FontWeight.bold
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold
                                               )
                                           ),
                                           Text("Letter grade",
-                                              style:TextStyle(color:Colors.white70,
+                                              style: TextStyle(
+                                                color: Colors.white70,
 
                                               )
                                           )
@@ -206,22 +229,25 @@ class StudentDashBoard extends StatelessWidget {
                                     )
                                 ),
                                 Container(
-                                    margin:EdgeInsets.only(right:24),
+                                    margin: EdgeInsets.only(right: 24),
 
-                                    padding:EdgeInsets.all(25),
-                                    decoration:BoxDecoration(color:kSecondaryColor2,
-                                        borderRadius:BorderRadius.circular(16)
+                                    padding: EdgeInsets.all(25),
+                                    decoration: BoxDecoration(
+                                        color: kSecondaryColor2,
+                                        borderRadius: BorderRadius.circular(16)
                                     ),
-                                    child:Column(
-                                        children:[
+                                    child: Column(
+                                        children: [
                                           Text("B+",
-                                              style:TextStyle(color:Colors.white,
-                                                  fontSize:18,
-                                                  fontWeight:FontWeight.bold
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold
                                               )
                                           ),
                                           Text("Letter grade",
-                                              style:TextStyle(color:Colors.white70,
+                                              style: TextStyle(
+                                                color: Colors.white70,
 
                                               )
                                           )
@@ -234,15 +260,15 @@ class StudentDashBoard extends StatelessWidget {
 
                         ))
                   ]),
-                  SizedBox(height:50),
+                  SizedBox(height: 50),
                   Text("Monday,22 April",
-                      style:GoogleFonts.inter(
-                          fontWeight:FontWeight.w600,
-                          fontSize:25
+                      style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 25
                       )
 
                   ),
-                  SizedBox(height:20),
+                  SizedBox(height: 20),
                   Expanded(
                     child: Obx(() {
                       final periods = timeTableController.classTimeTable
@@ -273,11 +299,13 @@ class StudentDashBoard extends StatelessWidget {
                             child: Row(
                               children: [
                                 Text(
-                                  "${row['start_time'] ?? ''} - ${row['end_time'] ?? ''}",
+                                  "${row['start_time'] ??
+                                      ''} - ${row['end_time'] ?? ''}",
                                   style: TextStyle(color: greyColor),
                                 ),
                                 SizedBox(width: 20),
-                                Container(height: 30, width: 2, color: Colors.grey),
+                                Container(
+                                    height: 30, width: 2, color: Colors.grey),
                                 SizedBox(width: 30),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -318,4 +346,6 @@ class StudentDashBoard extends StatelessWidget {
           ),
         ));
   }
+
+
 }

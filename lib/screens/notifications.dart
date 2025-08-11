@@ -20,7 +20,7 @@ class Notifications extends StatelessWidget {
         backgroundColor: const Color(0xFFF5F6FA),
         appBar: AppBar(
           backgroundColor: drawerContainer,
-          elevation: 3,
+          elevation:0,
           title: Text(
             "Notifications",
             style: GoogleFonts.roboto(

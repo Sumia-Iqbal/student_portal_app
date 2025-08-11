@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/students_controller.dart';
 import '../helpers/colors.dart';
 import '../helpers/extensions.dart';
+import '../widgets/main_nav.dart';
 import 'dash_board_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -96,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                           if (loginResult == 'success') {
                             await studentsController.fetchStudentData(
                                 cnic, password);
-                            context.openScreen(StudentDashBoard());
+                            context.openScreen(MainNav());
                           } else {
                             context
                                 .showSnackBar("Invalid CNIC or Password");
